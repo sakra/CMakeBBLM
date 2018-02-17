@@ -32,7 +32,10 @@ function(resolve_templates _propNames)
 				list (APPEND ${_propNames} ${_propName})
 			endforeach()
 		elseif (_unresolvedPropName MATCHES "CMP<NNNN>")
-			execute_process(COMMAND ${CMAKE_COMMAND} --help-policies OUTPUT_VARIABLE _output OUTPUT_STRIP_TRAILING_WHITESPACE)
+			execute_process(
+				COMMAND ${CMAKE_COMMAND} --help-policies
+				OUTPUT_VARIABLE _output
+				OUTPUT_STRIP_TRAILING_WHITESPACE)
 			string (REPLACE "\n" ";" _output "${_output}")
 			foreach (_line IN LISTS _output)
 				if (_line MATCHES "^ *CMP([0-9]+) *$")
@@ -59,7 +62,10 @@ function(resolve_templates _propNames)
 	set (${_propNames} ${${_propNames}} PARENT_SCOPE)
 endfunction()
 
-execute_process(COMMAND ${CMAKE_COMMAND} --help-command-list OUTPUT_VARIABLE _output OUTPUT_STRIP_TRAILING_WHITESPACE)
+execute_process(
+	COMMAND ${CMAKE_COMMAND} --help-command-list
+	OUTPUT_VARIABLE _output
+	OUTPUT_STRIP_TRAILING_WHITESPACE)
 string (REPLACE "\n" ";" _output "${_output}")
 foreach (_line IN LISTS _output)
 	if (_line MATCHES "^([a-z_]+) *$")
@@ -71,7 +77,10 @@ endforeach()
 #message (STATUS "${_commandList}")
 
 if (CMAKE_VERSION VERSION_LESS "3.0.0")
-	execute_process(COMMAND ${CMAKE_COMMAND} --help-compatcommands OUTPUT_VARIABLE _output OUTPUT_STRIP_TRAILING_WHITESPACE)
+	execute_process(
+		COMMAND ${CMAKE_COMMAND} --help-compatcommands
+		OUTPUT_VARIABLE _output
+		OUTPUT_STRIP_TRAILING_WHITESPACE)
 	string (REPLACE "\n" ";" _output "${_output}")
 	foreach (_line IN LISTS _output)
 		if (_line MATCHES "^  ([a-z_]+) *$")
@@ -92,7 +101,10 @@ string (REGEX REPLACE "[A-Za-z0-9_-]+" "\t\t<string>\\0</string>" BBLMKeywordLis
 string (REPLACE ";" "\n" BBLMKeywordList "${BBLMKeywordList}")
 #message (STATUS "${BBLMKeywordList}")
 
-execute_process(COMMAND ${CMAKE_COMMAND} --help-property-list OUTPUT_VARIABLE _output OUTPUT_STRIP_TRAILING_WHITESPACE)
+execute_process(
+	COMMAND ${CMAKE_COMMAND} --help-property-list
+	OUTPUT_VARIABLE _output
+	OUTPUT_STRIP_TRAILING_WHITESPACE)
 string (REPLACE "\n" ";" _output "${_output}")
 foreach (_line IN LISTS _output)
 	if (_line MATCHES "^([A-Za-z0-9_<>-]+) *$")
@@ -104,7 +116,10 @@ endforeach()
 resolve_templates(_propertyList ${_propertyList})
 #message (STATUS "${_propertyList}")
 
-execute_process(COMMAND ${CMAKE_COMMAND} --help-variable-list OUTPUT_VARIABLE _output OUTPUT_STRIP_TRAILING_WHITESPACE)
+execute_process(
+	COMMAND ${CMAKE_COMMAND} --help-variable-list
+	OUTPUT_VARIABLE _output
+	OUTPUT_STRIP_TRAILING_WHITESPACE)
 string (REPLACE "\n" ";" _output "${_output}")
 foreach (_line IN LISTS _output)
 	if (_line MATCHES "^([A-Za-z0-9_<>-]+) *$")
@@ -119,7 +134,10 @@ resolve_templates(_variableList ${_variableList})
 
 # parse keywords from command help
 foreach (_command IN LISTS _commandList)
-	execute_process(COMMAND ${CMAKE_COMMAND} --help-command ${_command} OUTPUT_VARIABLE _output OUTPUT_STRIP_TRAILING_WHITESPACE)
+	execute_process(
+		COMMAND ${CMAKE_COMMAND} --help-command ${_command}
+		OUTPUT_VARIABLE _output
+		OUTPUT_STRIP_TRAILING_WHITESPACE)
 	string (REGEX MATCHALL "${_command}\\([^)]*\\)" _signatures "${_output}")
 	#message (STATUS "${_signatures}")
 	foreach (_singnature IN LISTS _signatures)
@@ -130,18 +148,20 @@ endforeach()
 # remove false positives, e.g.:
 #   mark_as_advanced([CLEAR|FORCE] VAR VAR2 VAR...)
 #   add_definitions(-DFOO -DBAR ...)
-list(REMOVE_ITEM _keywordList "DFOO" "DBAR" "VAR" "VAR2")
-# explicity add keywords missed by command parser
-list(APPEND _keywordList "ARGV(0..9)" "ARGC" "ARGV" "ARGN")
-list(APPEND _keywordList "STATUS" "WARNING" "AUTHOR_WARNING" "SEND_ERROR" "FATAL_ERROR" "DEPRECATION")
-list(APPEND _keywordList "DIRECTORY" "NAME" "EXT" "NAME_WE" "PATH" "ABSOLUTE" "REALPATH")
+list (REMOVE_ITEM _keywordList "DFOO" "DBAR" "VAR" "VAR2")
+# explicitly add keywords missed by command parser
+list (APPEND _keywordList "ARGV(0..9)" "ARGC" "ARGV" "ARGN")
+list (APPEND _keywordList "STATUS" "WARNING" "AUTHOR_WARNING" "SEND_ERROR" "FATAL_ERROR" "DEPRECATION")
+list (APPEND _keywordList "DIRECTORY" "NAME" "EXT" "NAME_WE" "PATH" "ABSOLUTE" "REALPATH")
 resolve_templates(_keywordList ${_keywordList})
 #message (STATUS "${_keywordList}")
 
 set (BBLMPredefinedNameList ${_propertyList} ${_variableList} ${_keywordList})
 list (SORT BBLMPredefinedNameList)
 list (REMOVE_DUPLICATES BBLMPredefinedNameList)
-string (REGEX REPLACE "[@A-Za-z0-9_-]+" "\t\t<string>\\0</string>" BBLMPredefinedNameList "${BBLMPredefinedNameList}")
+string (
+	REGEX REPLACE "[@A-Za-z0-9_<>-]+" "\t\t<string>\\0</string>"
+	BBLMPredefinedNameList "${BBLMPredefinedNameList}")
 string (REPLACE ";" "\n" BBLMPredefinedNameList "${BBLMPredefinedNameList}")
 #message (STATUS "${BBLMPredefinedNameList}")
 
