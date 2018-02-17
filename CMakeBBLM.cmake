@@ -97,7 +97,9 @@ if (_deprecatedCommandList)
 endif()
 list (SORT BBLMKeywordList)
 list (REMOVE_DUPLICATES BBLMKeywordList)
-string (REGEX REPLACE "[A-Za-z0-9_-]+" "\t\t<string>\\0</string>" BBLMKeywordList "${BBLMKeywordList}")
+string (
+	REGEX REPLACE "[A-Za-z0-9_-]+" "\t\t<string>\\0</string>"
+	BBLMKeywordList "${BBLMKeywordList}")
 string (REPLACE ";" "\n" BBLMKeywordList "${BBLMKeywordList}")
 #message (STATUS "${BBLMKeywordList}")
 
