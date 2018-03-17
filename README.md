@@ -39,5 +39,5 @@ Restart BBEdit after installation. The language `CMake` is then available in an 
 language popup menu. The `CMakeBBLM` module is automatically used for files named `CMakeLists.txt`
 and for files with the extensions `.cmake` or `.ctest`.
 
-[clm]:http://www.barebones.com/support/develop/clm.html
+[clm]:https://www.barebones.com/support/develop/clm.html
 [cmake]:https://cmake.org/
