@@ -56,7 +56,10 @@
 		<key>Identifier and Keyword Character Class</key>
 		<string>a-z_A-Z0-9_</string>
 		<key>Comment Pattern</key>
-		<string><![CDATA[(?>#.*$)]]></string>
+		<string><![CDATA[(?x:
+                    (?s:\#\[(?P<bracket_comment>\=*)\[.*?\](?P=bracket_comment)\]) |
+                    (\#.*$)
+                )]]></string>
 		<key>String Pattern</key>
 		<string><![CDATA["(?>\\.|[^"\\])*"]]></string>
 		<key>Function Pattern</key>
