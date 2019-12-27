@@ -61,7 +61,10 @@
                     (\#.*$)
                 )]]></string>
 		<key>String Pattern</key>
-		<string><![CDATA["(?>\\.|[^"\\])*"]]></string>
+		<string><![CDATA[(?x:
+                     "(?>\\.|[^"\\])*" |
+                     (?<!\#)(?s:\[(?P<bracket_string>\=*)\[.*?\](?P=bracket_string)\])
+                )]]></string>
 		<key>Function Pattern</key>
 		<string><![CDATA[(?x:
 	(?P<function>
