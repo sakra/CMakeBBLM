@@ -1,3 +1,7 @@
+## 1.2.2 (2021-01-03)
+
+* CMake 3.19 compatibility.
+
 ## 1.2.1 (2020-04-14)
 
 * CMake 3.17 compatibility. 
