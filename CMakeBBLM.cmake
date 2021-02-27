@@ -145,6 +145,7 @@ endforeach()
 resolve_templates(_propertyList ${_propertyList})
 #message (STATUS "${_propertyList}")
 
+# cmake variables
 execute_process(
 	COMMAND ${CMAKE_COMMAND} --help-variable-list
 	OUTPUT_VARIABLE _output
@@ -180,6 +181,7 @@ list(APPEND _variableList "CMAKE_ARGV(0..9)" "CMAKE_MATCH_(0..9)")
 # add undocumented, but useful CMake variables
 list(APPEND _variableList "CMAKE_SKIP_ASSEMBLY_SOURCE_RULES" "CMAKE_SKIP_PREPROCESSED_SOURCE_RULES" "CMAKE_SKIP_RULE_DEPENDENCY")
 list(APPEND _variableList "CMAKE_DISABLE_SOURCE_CHANGES" "CMAKE_DISABLE_IN_SOURCE_BUILD")
+list(APPEND _variableList "CMAKE_LINK_DEPENDS_DEBUG_MODE")
 resolve_templates(_variableList ${_variableList})
 #message (STATUS "${_variableList}")
 
