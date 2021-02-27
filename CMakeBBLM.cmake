@@ -157,6 +157,24 @@ foreach (_line IN LISTS _output)
 		message(STATUS "Skipping line \"${_line}\"")
 	endif()
 endforeach()
+
+# cmake environment variables
+execute_process(
+	COMMAND ${CMAKE_COMMAND} --help-manual cmake-env-variables
+	OUTPUT_VARIABLE _output
+	OUTPUT_STRIP_TRAILING_WHITESPACE)
+string (REPLACE "\n" ";" _output "${_output}")
+set (_variable "")
+foreach (_line IN LISTS _output)
+	if(_line MATCHES "^-+ *$")
+		if (_variable)
+			list (APPEND _variableList "${_variable}")
+			set (_variable "")
+		endif()
+	elseif (_line MATCHES "^([A-Za-z0-9_<>-]+) *$")
+		set (_variable "${_line}")
+	endif()
+endforeach()
 # explicitly add variables missed by command parser
 list(APPEND _variableList "CMAKE_ARGV(0..9)" "CMAKE_MATCH_(0..9)")
 # add undocumented, but useful CMake variables
