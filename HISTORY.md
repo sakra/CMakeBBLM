@@ -1,3 +1,10 @@
+## 1.3.0 (2021-04-05)
+
+* CMake 3.20 compatibility.
+* add CMake environment variables.
+* add missing assembler dialect variables.
+* add undocumented variable `CMAKE_LINK_DEPENDS_DEBUG_MODE`.
+
 ## 1.2.2 (2021-01-03)
 
 * CMake 3.19 compatibility.
