@@ -29,7 +29,7 @@ module:
 The generated module is tailored to the version of CMake installed on the system, i.e., it will
 only support keywords and predefined names valid for that version.
 
-The install script copies the generated language module to BBEdit's application support folder in
+The installation script copies the generated language module to BBEdit's application support folder in
 the Dropbox data folder or in the user's Library folder.
 
 Usage

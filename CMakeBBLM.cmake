@@ -1,7 +1,7 @@
 # CMakeBBLM. See https://github.com/sakra/CMakeBBLM
 #
 # This script generates a BBEdit codeless language module for CMake from cmake.plist.in
-# See http://www.barebones.com/support/develop/clm.html
+# See https://www.barebones.com/support/develop/clm.html
 #
 # Copyright (c) 2016-2021 Sascha Kratky
 #
@@ -18,6 +18,9 @@ function(resolve_templates _propNames)
 	endif()
 	if (NOT CMAKE_VERSION VERSION_LESS "3.19.0")
 		list (APPEND _languages "ISPC")
+	endif()
+	if (NOT CMAKE_VERSION VERSION_LESS "3.21.0")
+		list (APPEND _languages "HIP")
 	endif()
 	set (_configurations "None" "Debug" "MinSizeRel" "Release" "RelWithDebInfo")
 	foreach (_unresolvedPropName IN LISTS ARGN)

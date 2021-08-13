@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd "`dirname \"$0\"`"
+cd "$(dirname "$0")" || exit 1
 
 if [ -n "$(which cmake)" ]; then
 	cmake -P CMakeBBLM.cmake
