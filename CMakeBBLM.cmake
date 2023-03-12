@@ -199,6 +199,7 @@ list(APPEND _variableList "CMAKE_ARGV(0..9)" "CMAKE_MATCH_(0..9)")
 list(APPEND _variableList "CMAKE_SKIP_ASSEMBLY_SOURCE_RULES" "CMAKE_SKIP_PREPROCESSED_SOURCE_RULES" "CMAKE_SKIP_RULE_DEPENDENCY")
 list(APPEND _variableList "CMAKE_DISABLE_SOURCE_CHANGES" "CMAKE_DISABLE_IN_SOURCE_BUILD")
 list(APPEND _variableList "CMAKE_LINK_DEPENDS_DEBUG_MODE")
+list(APPEND _variableList "CMAKE_NINJA_FORCE_RESPONSE_FILE")
 resolve_templates(_variableList ${_variableList})
 #message (STATUS "${_variableList}")
 
