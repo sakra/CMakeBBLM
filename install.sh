@@ -11,7 +11,10 @@ else
 	exit 1
 fi
 
-if [ -d ~/Dropbox/Application\ Support/BBEdit ]; then
+if [ -d ~/Library/CloudStorage/Dropbox/Application\ Support/BBEdit ]; then
+	mkdir -v -p ~/Library/CloudStorage/Dropbox/Application\ Support/BBEdit/Language\ Modules
+	cp -f -v cmake.plist ~/Library/CloudStorage/Dropbox/Application\ Support/BBEdit/Language\ Modules
+elif [ -d ~/Dropbox/Application\ Support/BBEdit ]; then
 	mkdir -v -p ~/Dropbox/Application\ Support/BBEdit/Language\ Modules
 	cp -f -v cmake.plist ~/Dropbox/Application\ Support/BBEdit/Language\ Modules
 else
