@@ -1,3 +1,14 @@
+## 1.4.0 (2023-03-14)
+
+* CMake 3.26 compatibility.
+* detect changed Dropbox location in `CloudStorage` folder.
+* resolve `<FEATURE>` template variables.
+* add undocumented variable `CMAKE_NINJA_FORCE_RESPONSE_FILE`.
+* add undocumented variable `CMAKE_ADD_CUSTOM_COMMAND_DEPENDS_EXPLICIT_ONLY`.
+* add undocumented variable `CMAKE_SUPPRESS_DEVELOPER_ERRORS`.
+* add undocumented variable `CMAKE_SUPPRESS_DEVELOPER_WARNINGS`.
+* add new assembler dialect `ASM_MARMASM`.
+
 ## 1.3.2 (2022-12-29)
 
 * CMake 3.24 compatibility.
