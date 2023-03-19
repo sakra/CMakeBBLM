@@ -221,6 +221,7 @@ list(APPEND _variableList "CMAKE_LINK_DEPENDS_DEBUG_MODE")
 list(APPEND _variableList "CMAKE_NINJA_FORCE_RESPONSE_FILE")
 list(APPEND _variableList "CMAKE_ADD_CUSTOM_COMMAND_DEPENDS_EXPLICIT_ONLY")
 list(APPEND _variableList "CMAKE_SUPPRESS_DEVELOPER_ERRORS" "CMAKE_SUPPRESS_DEVELOPER_WARNINGS")
+list(APPEND _variableList "CMAKE_SYSTEM_ARCH" "CMAKE_REQUIRED_LIBRARIES")
 resolve_templates(_variableList ${_variableList})
 #message (STATUS "${_variableList}")
 
