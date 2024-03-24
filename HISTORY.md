@@ -1,3 +1,12 @@
+## 1.5.0 (2024-03-24)
+
+* CMake 3.29 compatibility.
+* resolve `LINKER_<TYPE>` template variables.
+* resolve `XCODE_EMBED_<type>` template variables.
+* replace http with https in documentation URLs.
+* add undocumented variable `CMAKE_SYSTEM_ARCH`.
+* add undocumented variable `CMAKE_REQUIRED_LIBRARIES`.
+
 ## 1.4.0 (2023-03-14)
 
 * CMake 3.26 compatibility.
