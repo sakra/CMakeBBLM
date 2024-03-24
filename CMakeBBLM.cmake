@@ -3,7 +3,7 @@
 # This script generates a BBEdit codeless language module for CMake from cmake.plist.in
 # See https://www.barebones.com/support/develop/clm.html
 #
-# Copyright (c) 2016-2021 Sascha Kratky
+# Copyright (c) 2016-2024 Sascha Kratky
 #
 # Distributed under the MIT License. See accompanying license file.
 
