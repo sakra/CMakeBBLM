@@ -259,9 +259,9 @@ string (REPLACE ";" "\n" BBLMPredefinedNameList "${BBLMPredefinedNameList}")
 #message (STATUS "${BBLMPredefinedNameList}")
 
 if (CMAKE_VERSION VERSION_LESS "3.0.0")
-	set (BBLMReferenceSearchURLTemplate "http://www.cmake.org/cmake/help/v${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}.${CMAKE_PATCH_VERSION}/cmake.html#__SYMBOLNAME__")
+	set (BBLMReferenceSearchURLTemplate "https://www.cmake.org/cmake/help/v${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}.${CMAKE_PATCH_VERSION}/cmake.html#__SYMBOLNAME__")
 else()
-	set (BBLMReferenceSearchURLTemplate "http://www.cmake.org/cmake/help/v${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}/search.html?q=__SYMBOLNAME__&amp;check_keywords=yes&amp;area=default")
+	set (BBLMReferenceSearchURLTemplate "https://www.cmake.org/cmake/help/v${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}/search.html?q=__SYMBOLNAME__&amp;check_keywords=yes&amp;area=default")
 endif()
 
 configure_file("${CMAKE_CURRENT_LIST_DIR}/cmake.plist.in" "${CMAKE_CURRENT_LIST_DIR}/cmake.plist")
